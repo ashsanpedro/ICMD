@@ -1,0 +1,168 @@
+@if(changeLogsData.length != 0){
+@for(item of changeLogsData;track item){
+<mat-accordion>
+    <mat-expansion-panel class="border border-secondary mt-5 ml-5 mb-8">
+        <mat-expansion-panel-header>
+            <h3 class="card-label pt-1">{{item.key}}</h3>
+        </mat-expansion-panel-header>
+
+        <!-- <div style="position: relative; max-height: 400px;"> -->
+        <div>
+            <ng-scrollbar visibility="hover" style="max-height: 400px;">
+                @for(subItem of item.items;track subItem){
+                <fieldset class="scheduler-border mt-3 mb-5">
+                    <legend class="scheduler-border mt-3 p-3">
+                        {{subItem.date | date:'MM/dd/yyyy hh:mm a'}} - {{subItem.userName}}
+                    </legend>
+                    <!-- @if(subItem.statuses.length != 0){ -->
+                    @for(item1 of subItem.statuses;track item1){
+                    <div class="row col-12 table-responsive mt-2 ml-2">
+                        <span
+                            [ngClass]="[item1.name == 'Activated' ? 'text-success text-center h5' : '',
+                                   item1.name == 'Deactivated' || item1.name == 'Deleted' ? 'text-danger text-center h5':'']">Tag
+                            was {{item1.name}}.</span>
+                    </div>
+                    }
+
+                    @if(subItem.properties.length != 0 || subItem.attributes.length != 0){
+
+                    <div class="row col-12 table-responsive mt-3">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Property / Attribute</th>
+                                    <th>Old Value</th>
+                                    <th>New Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(property of subItem.properties; track property){
+                                <tr>
+                                    <td [ngClass]="[property.name == 'Activated' ? 'text-success text-center h5':'',
+                                                property.name == 'Deactivated' || property.name == 'Deleted' ? 'text-danger text-center h5':'']"
+                                        [attr.colspan]="(property.name == 'Activated' ||
+                                                    property.name == 'Deactivated' ||
+                                                    property.name == 'Deleted') ? 3 : 1">
+                                        {{property.name}}</td>
+                                    <td>{{property.oldValue}}</td>
+                                    <td>{{property.newValue}}</td>
+                                </tr>
+                                }
+
+                                @for(attr of subItem.attributes; track attr){
+                                <tr>
+                                    <td>{{attr.name}}</td>
+                                    <td>{{attr.oldValue}}</td>
+                                    <td>{{attr.newValue}}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    }
+
+                    @if(subItem.referenceDocuments.length != 0){
+                    <h4 class="mt-5">Reference Documents</h4>
+                    <hr />
+                    <div class="row col-12 table-responsive mt-3">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Document No</th>
+                                    <th>Revision</th>
+                                    <th>Version</th>
+                                    <th>Sheet</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(doc of subItem.referenceDocuments; track doc){
+                                <tr>
+                                    <td>{{doc.type}}</td>
+                                    <td>{{doc.documentNo}}</td>
+                                    <td>{{doc.revision}}</td>
+                                    <td>{{doc.version}}</td>
+                                    <td>{{doc.sheet}}</td>
+                                    <td>{{doc.status}}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+
+                    @if(subItem.bulkDeleteRecords.length != 0 ){
+                        <div class="row col-12 table-responsive mt-3">
+                            <table class="table table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(bulkRecord of subItem.bulkDeleteRecords; track bulkRecord){
+                                    <tr>
+                                        <td [ngClass]="[bulkRecord.status ? 'text-success text-center h5': 'text-danger text-center h5']">
+                                            {{bulkRecord.name}}</td>
+                                        <td>{{bulkRecord.message}}</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    @if(subItem.importRecords.length != 0 ){
+                        <div class="row col-12 table-responsive mt-3">
+                            <mat-accordion>
+                            <mat-expansion-panel *ngFor="let record of subItem.importRecords" class="border border-secondary mt-2 mx-5 rounded">
+                                <mat-expansion-panel-header>
+                                  <mat-panel-title>
+                                      <h4 class="card-label pt-1"> {{ record.name }} </h4>
+                                  </mat-panel-title>
+                                  <mat-panel-description>
+                                    <span [ngClass]="record.status === 'Success' ? 'text-success text-center h5' : 'text-danger text-center h5'">
+                                        {{ record.status | capitalize }} @if (record.message) { - {{ record.message }} }
+                                    </span>
+                                  </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                @if (record.operation) {
+                                    <div class="text-start h6 my-3">
+                                    Operation: {{ record.operation | capitalize }}
+                                    </div>
+                                  }
+
+                                  <div class="row col-12 table-responsive mt-3">
+                                    <table class="table table-stripped">
+                                        <thead>
+                                            <tr>
+                                                <th>Item Column Name</th>
+                                                <th>Previous Value</th>
+                                                <th>New Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of record.items">
+                                                <td>{{ item.itemColumnName }}</td>
+                                                <td>{{ item.previousValue || 'N/A' }}</td>
+                                                <td>{{ item.newValue }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    }
+
+                </fieldset>
+                }
+            </ng-scrollbar>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+}
+}

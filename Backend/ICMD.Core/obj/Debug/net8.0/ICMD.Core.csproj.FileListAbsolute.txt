@@ -1,0 +1,13 @@
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/bin/Debug/net8.0/ICMD.Core.deps.json
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/bin/Debug/net8.0/ICMD.Core.dll
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/bin/Debug/net8.0/ICMD.Core.pdb
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.csproj.AssemblyReference.cache
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.AssemblyInfoInputs.cache
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.AssemblyInfo.cs
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.csproj.CoreCompileInputs.cache
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.sourcelink.json
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.dll
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/refint/ICMD.Core.dll
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ICMD.Core.pdb
+/Users/ashleysanpedro/Desktop/ICMD_PROJECT/ICMD/icmd-main/Backend/ICMD.Core/obj/Debug/net8.0/ref/ICMD.Core.dll
